@@ -100,7 +100,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   String _getUrl() {
-    final url = _preferences.getString(_urlKey) ?? 'https://demo.traccar.org';
+    final url = _preferences.getString(_urlKey) ?? 'https://map.gital.ca';
     return url.endsWith('/') ? url.substring(0, url.length - 1) : url;
   }
 
