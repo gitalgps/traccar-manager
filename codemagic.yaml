@@ -4,6 +4,9 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m1
 
+    integrations:
+      app_store_connect: YOUR_APP_STORE_CONNECT_KEY_NAME
+
     environment:
       flutter: stable
       ios_signing:
@@ -28,9 +31,10 @@ workflows:
       - name: Build signed iOS IPA
         script: |
           flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
-publishing:
-  app_store_connect:
-    auth: integration
 
     artifacts:
       - build/ios/ipa/*.ipa
+
+    publishing:
+      app_store_connect:
+        auth: integration
