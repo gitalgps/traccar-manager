@@ -6,6 +6,9 @@ workflows:
 
     environment:
       flutter: stable
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.gitalgps.traccar.manager
       vars:
         PATH: "$PATH:$HOME/.pub-cache/bin"
 
@@ -22,13 +25,9 @@ workflows:
         script: |
           xcode-project use-profiles
 
-      - name: Show build settings
-        script: |
-          xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -showBuildSettings | grep -E "PRODUCT_BUNDLE_IDENTIFIER|DEVELOPMENT_TEAM|CODE_SIGN_STYLE|PROVISIONING_PROFILE_SPECIFIER" || true
-
       - name: Build signed iOS IPA
         script: |
-          flutter build ipa --release
+          flutter build ipa --release --export-method app-store
 
     artifacts:
       - build/ios/ipa/*.ipa
