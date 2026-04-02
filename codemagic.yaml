@@ -22,6 +22,10 @@ workflows:
         script: |
           xcode-project use-profiles
 
+      - name: Show build settings
+        script: |
+          xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -showBuildSettings | grep -E "PRODUCT_BUNDLE_IDENTIFIER|DEVELOPMENT_TEAM|CODE_SIGN_STYLE|PROVISIONING_PROFILE_SPECIFIER" || true
+
       - name: Build signed iOS IPA
         script: |
           flutter build ipa --release
