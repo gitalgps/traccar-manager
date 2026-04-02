@@ -1,7 +1,7 @@
 name: traccar_manager
 description: "Gital GPS"
 publish_to: 'none'
-version: 6.0.3+69
+version: 1.1.0
 
 environment:
   sdk: ^3.7.2
