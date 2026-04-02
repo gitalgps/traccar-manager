@@ -12,9 +12,9 @@ workflows:
         script: |
           flutter pub get
 
-      - name: Build iOS IPA
+      - name: Build iOS without code signing
         script: |
-          flutter build ipa --release
+          flutter build ipa --release --no-codesign
 
     artifacts:
       - build/ios/ipa/*.ipa
