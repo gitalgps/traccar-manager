@@ -6,8 +6,14 @@ workflows:
 
     environment:
       flutter: stable
+      vars:
+        PATH: "$PATH:$HOME/.pub-cache/bin"
 
     scripts:
+      - name: Install FlutterFire CLI
+        script: |
+          dart pub global activate flutterfire_cli
+
       - name: Get Flutter packages
         script: |
           flutter pub get
